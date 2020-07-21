@@ -2,7 +2,7 @@
 name = "cargo-create"
 description = "A cargo command for fast project creation based on GitHub and Tera templates"
 version = "0.0.0"
-repository = ""
+repository = "https://github.com/SirWindfield/cargo-create"
 readme = "README.md"
 keywords = ["cargo", "git", "templates"]
 categories = ["command-line-utilities", "development-tools"]
