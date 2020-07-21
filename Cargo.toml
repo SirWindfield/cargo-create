@@ -1,5 +1,11 @@
 [package]
-name = "zerotask-rust-lib-template"
-version = "0.1.0"
+name = "cargo-create"
+description = "A cargo command for fast project creation based on GitHub and Tera templates"
+version = "0.0.0"
+repository = ""
+readme = "README.md"
+keywords = ["cargo", "git", "templates"]
+categories = ["command-line-utilities", "development-tools"]
+license = "MIT OR Apache-2.0"
 authors = ["Sven Lechner <SirWindfield@users.noreply.github.com>"]
 edition = "2018"
