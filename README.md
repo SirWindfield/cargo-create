@@ -15,6 +15,10 @@ cargo install cargo-create --locked
 
 The crate does install the CLI under two names: `jen` and `cargo-create`, allowing for a nicer Rust-related workflow.
 
+## Examples
+
+An example template repository can be found over at https://github.com/SirWindfield/template-test.
+
 ## License
 
 Licensed under either of
