@@ -1,11 +1,32 @@
 [package]
 name = "cargo-create"
-description = "A cargo command for fast project creation based on GitHub and Tera templates"
-version = "0.0.0"
-repository = "https://github.com/SirWindfield/cargo-create"
-readme = "README.md"
-keywords = ["cargo", "git", "templates"]
-categories = ["command-line-utilities", "development-tools"]
+description = "A CLI for fast project creation, powered by Tera"
 license = "MIT OR Apache-2.0"
-authors = ["Sven Lechner <SirWindfield@users.noreply.github.com>"]
+readme = "README.md"
+repository = "https://github.com/SirWindfield/cargo-create"
+version = "0.0.0"
 edition = "2018"
+
+[[bin]]
+name = "cargo-create"
+path = "src/main.rs"
+
+[[bin]]
+name = "jen"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1.0.32"
+clap = "3.0.0-beta.1"
+chrono = { version = "0.4.13", features = ["serde"] }
+console = "0.11.3"
+directories-next = "1.0.1"
+git2 = "0.13.8"
+indicatif = "0.15.0"
+inventory = "0.1.7"
+log = "0.4.11"
+petgraph = "0.5.1"
+serde = { version = "1.0.114", features = ["derive"] }
+tera = "1.4.0"
+toml = "0.5.6"
+walkdir = "2.3.1"

@@ -1,12 +1,8 @@
-# cargo-create
+# example
 
 [![docs_master_badge]][docs_master_url]
 
-> A cargo command for fast project creation based on GitHub and Tera templates.
 
-## Current Properties
-
-- MSRV: 1.41.0
 
 ## License
 
