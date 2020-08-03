@@ -6,7 +6,13 @@ use crate::{
 };
 use anyhow::Result;
 use clap::Clap;
-use std::{fs, fs::File, io::Read, path::PathBuf, process::exit};
+use std::{
+    fs,
+    fs::{File, OpenOptions},
+    io::Read,
+    path::PathBuf,
+    process::exit,
+};
 
 mod args;
 mod config;
@@ -18,7 +24,11 @@ mod steps;
 fn a(args: Args, user_config_path: PathBuf) -> Result<()> {
     // Read in user config file.
     let mut user_config_content = String::new();
-    let mut file = File::open(user_config_path)?;
+    let mut file = OpenOptions::new()
+        .create(true)
+        .read(true)
+        .write(true)
+        .open(user_config_path)?;
     file.read_to_string(&mut user_config_content)?;
     let user_config: UserConfig = toml::from_str(&user_config_content)?;
 
