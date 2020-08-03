@@ -1,5 +1,8 @@
 # Ignore compilation units.
 /target
 
+# Ignore default development configuration
+config.user.toml
+
 # Ignore backup files.
 *.rs.bk
