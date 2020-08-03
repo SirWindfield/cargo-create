@@ -10,7 +10,7 @@ use std::{
 const USER_CONFIG_SIMPLE_FILENAME: &str = "config.toml";
 
 /// The config filename when running in debug mode.
-#[cfg(debug_assertions)]
+//#[cfg(debug_assertions)]
 const DEBUG_USER_CONFIG_FILENAME: &str = "config.user.toml";
 
 /// The user configuration file.
@@ -46,6 +46,8 @@ pub fn user_config_file_path() -> Option<PathBuf> {
                 home_dir_config_path
             };
         }
+
+        return Some(config_path);
     }
 
     None
