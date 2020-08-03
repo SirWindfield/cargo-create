@@ -5,7 +5,6 @@ use crate::{
     config::{template::TemplateConfig, user::UserConfig, CONFIG_FILENAME_JEN},
 };
 use anyhow::Result;
-use log::warn;
 use std::{
     fs::{self, File},
     io::Read,

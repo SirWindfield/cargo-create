@@ -1,7 +1,7 @@
 use crate::providers::{author::name::AUTHOR_KEY, VariableProvider};
 use git2::Config;
 use std::env;
-use tera::{Context, Value};
+use tera::Context;
 
 /// Detects the global git author.
 pub struct GitAuthorVariableProvider;
@@ -14,10 +14,7 @@ impl VariableProvider for GitAuthorVariableProvider {
                 .or_else(|_| {
                     let git_config = Config::open_default();
                     match git_config {
-                        Ok(git_config) => {
-                            let username = git_config.get_string("user.name");
-                            return username;
-                        }
+                        Ok(git_config) => git_config.get_string("user.name"),
                         Err(e) => Err(e),
                     }
                 });

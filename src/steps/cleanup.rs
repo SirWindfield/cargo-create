@@ -1,12 +1,7 @@
-use crate::{
-    args::Args,
-    config::{template::TemplateConfig, user::UserConfig, CONFIG_FILENAME_JEN},
-};
+use crate::config::CONFIG_FILENAME_JEN;
 use anyhow::Result;
-use log::warn;
 use std::{
-    fs::{self, File},
-    io::Read,
+    fs::{self},
     path::Path,
 };
 

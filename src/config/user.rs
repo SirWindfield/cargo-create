@@ -1,10 +1,7 @@
 use crate::config::CONFIG_FILENAME_JEN;
 use directories_next::{BaseDirs, ProjectDirs};
 use serde::Deserialize;
-use std::{
-    collections::HashMap,
-    path::{Path, PathBuf},
-};
+use std::{collections::HashMap, path::PathBuf};
 
 /// The config filename when running in release mode.
 const USER_CONFIG_SIMPLE_FILENAME: &str = "config.toml";

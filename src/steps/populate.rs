@@ -1,16 +1,6 @@
-use crate::{
-    args::Args,
-    config::user::UserConfig,
-    git::{clone_into_folder, parse_to_git_url},
-    providers::VariableProvider,
-};
+use crate::{args::Args, config::user::UserConfig, providers::VariableProvider};
 use anyhow::Result;
-use log::info;
-use std::{
-    collections::HashMap,
-    env, fs,
-    path::{Path, PathBuf},
-};
+use std::{collections::HashMap, fs, path::Path};
 use tera::{Context, Tera};
 use walkdir::WalkDir;
 

@@ -1,6 +1,6 @@
 use crate::providers::VariableProvider;
 use std::env;
-use tera::{Context, Value};
+use tera::Context;
 
 /// Detects the global git author.
 pub struct EnvAuthorVariableProvider;

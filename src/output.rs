@@ -1,6 +1,5 @@
 use crate::steps::NUMBER_OF_STEPS;
-use console::{style, Emoji, StyledObject};
-use log::warn;
+use console::{style, Emoji};
 
 /// Used when applying all specified features.
 pub(crate) const APPLYING_EMOJI: &Emoji = &Emoji("🔧", ">");
@@ -16,11 +15,6 @@ pub(crate) const DOWNLOAD_EMOJI: &Emoji = &Emoji("⏬", ">");
 pub(crate) const FILLING_EMOJI: &Emoji = &Emoji("🏗", ">");
 /// Used when indexing the repository.
 pub(crate) const INDEX_EMOJI: &Emoji = &Emoji("🔍", ">");
-
-/// Convenience method for logging deprecation warnings.
-pub(crate) fn deprecation_info(msg: &str) {
-    warn!("Deprecated: {}", msg);
-}
 
 /// Prints a message indicating the current step.
 #[inline]

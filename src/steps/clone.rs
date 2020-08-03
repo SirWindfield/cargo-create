@@ -8,6 +8,9 @@ use crate::{
 use anyhow::Result;
 use std::{env, path::PathBuf, process::exit};
 
+// Changing to `or_else` does mean that the function owns the reference and thus
+// fails on compilation.
+#[allow(clippy::or_fun_call)]
 pub fn run(args: &Args, user_config: &UserConfig) -> Result<PathBuf> {
     // `clap` does make it actually impossible (I think) to have an Option that is
     // None here.
@@ -35,7 +38,7 @@ pub fn run(args: &Args, user_config: &UserConfig) -> Result<PathBuf> {
         }
         clone_into_folder(&repository_url, &repository_dir_path)?;
 
-        return Ok(repository_dir_path);
+        Ok(repository_dir_path)
     } else {
         unreachable!();
     }

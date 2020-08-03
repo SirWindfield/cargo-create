@@ -1,6 +1,6 @@
 use crate::providers::{author::email::EMAIL_KEY, VariableProvider};
 use std::env;
-use tera::{Context, Value};
+use tera::Context;
 
 const EMAIL_ENV_NAME: &str = "EMAIL";
 

@@ -1,12 +1,11 @@
 use crate::output::{CHECKOUT_EMOJI, DOWNLOAD_EMOJI, INDEX_EMOJI};
 use anyhow::Result;
-use console::style;
 use git2::{
     build::{CheckoutBuilder, RepoBuilder},
-    FetchOptions, Progress, RemoteCallbacks,
+    FetchOptions, RemoteCallbacks,
 };
 use indicatif::{MultiProgress, ProgressBar, ProgressStyle};
-use std::path::{Path, PathBuf};
+use std::path::Path;
 
 /// Parses the input and creates a valid git repository.
 ///
@@ -30,15 +29,6 @@ pub fn parse_to_git_url(value: &str) -> String {
 /// a valid git url.
 pub fn get_repo_name(url: &str) -> &str {
     url.rsplitn(2, '/').next().unwrap().trim_end_matches(".git")
-}
-
-#[derive(Default)]
-struct State {
-    progress: Option<Progress<'static>>,
-    total: usize,
-    current: usize,
-    path: Option<PathBuf>,
-    newline: bool,
 }
 
 // [1/4] Cloning template repository...
@@ -72,7 +62,7 @@ pub fn clone_into_folder(url: &str, folder_path: impl AsRef<Path>) -> Result<()>
     indexed_pb.set_style(ps.clone());
     indexed_pb.set_prefix("[2/?]");
     indexed_pb.set_message(&format!("{} {:<15}", INDEX_EMOJI, "Indexing..."));
-    checkout_pb.set_style(ps.clone());
+    checkout_pb.set_style(ps);
     checkout_pb.set_prefix("[3/?]");
     checkout_pb.set_message(&format!("{} {:<15}", CHECKOUT_EMOJI, "Checking out..."));
 
@@ -110,7 +100,8 @@ pub fn clone_into_folder(url: &str, folder_path: impl AsRef<Path>) -> Result<()>
 
     let handle = std::thread::spawn(move || {
         mb.join().unwrap();
-        mb.join_and_clear();
+        mb.join_and_clear()
+            .expect("failed to join and wait on progressbars");
     });
 
     RepoBuilder::new()

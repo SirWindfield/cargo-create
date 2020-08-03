@@ -1,18 +1,11 @@
 use crate::{
     args::Args,
     config::user::{user_config_file_path, UserConfig},
-    git::parse_to_git_url,
-    output::{print_step, APPLYING_EMOJI, ASKING_EMOJI, CLEANING_EMOJI, FILLING_EMOJI},
+    output::{print_step, APPLYING_EMOJI, CLEANING_EMOJI, FILLING_EMOJI},
 };
 use anyhow::Result;
 use clap::Clap;
-use std::{
-    fs,
-    fs::{File, OpenOptions},
-    io::Read,
-    path::PathBuf,
-    process::exit,
-};
+use std::{fs::OpenOptions, io::Read, path::PathBuf, process::exit};
 
 mod args;
 mod config;

@@ -1,7 +1,7 @@
 use crate::providers::{author::email::EMAIL_KEY, VariableProvider};
 use git2::Config;
 use std::env;
-use tera::{Context, Value};
+use tera::Context;
 
 const GIT_AUTHOR_EMAIL_ENV_NAME: &str = "GIT_AUTHOR_EMAIL";
 const GIT_COMMITTER_EMAIL_ENV_NAME: &str = "GIT_COMMITTER_EMAIL";
@@ -17,10 +17,7 @@ impl VariableProvider for GitEmailVariableProvider {
                 .or_else(|_| {
                     let git_config = Config::open_default();
                     match git_config {
-                        Ok(git_config) => {
-                            let username = git_config.get_string("user.email");
-                            return username;
-                        }
+                        Ok(git_config) => git_config.get_string("user.email"),
                         Err(e) => Err(e),
                     }
                 });
