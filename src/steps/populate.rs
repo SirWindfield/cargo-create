@@ -7,12 +7,12 @@ use crate::{
 use anyhow::Result;
 use log::info;
 use std::{
+    collections::HashMap,
     env, fs,
     path::{Path, PathBuf},
 };
 use tera::{Context, Tera};
 use walkdir::WalkDir;
-use std::collections::HashMap;
 
 pub fn run(args: &Args, _user_config: &UserConfig, repo_path: impl AsRef<Path>) -> Result<()> {
     // Create the template engine and context.

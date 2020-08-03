@@ -6,8 +6,7 @@ use crate::{
     git::{clone_into_folder, parse_to_git_url},
 };
 use anyhow::Result;
-use std::{env, path::PathBuf};
-use std::process::exit;
+use std::{env, path::PathBuf, process::exit};
 
 pub fn run(args: &Args, user_config: &UserConfig) -> Result<PathBuf> {
     // `clap` does make it actually impossible (I think) to have an Option that is
