@@ -8,6 +8,8 @@ pub(crate) const APPLYING_EMOJI: &Emoji = &Emoji("🔧", ">");
 pub(crate) const ASKING_EMOJI: &Emoji = &Emoji("✏", ">");
 /// Used when checking out the repository.
 pub(crate) const CHECKOUT_EMOJI: &Emoji = &Emoji("🚧", ">");
+/// Used when cleaning up the generated project.
+pub(crate) const CLEANING_EMOJI: &Emoji = &Emoji("🚿", ">");
 /// Used when downloading the repository.
 pub(crate) const DOWNLOAD_EMOJI: &Emoji = &Emoji("⏬", ">");
 /// Used when filling out the variable placeholders.

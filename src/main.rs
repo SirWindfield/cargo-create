@@ -2,7 +2,7 @@ use crate::{
     args::Args,
     config::user::{user_config_file_path, UserConfig},
     git::parse_to_git_url,
-    output::{print_step, APPLYING_EMOJI, ASKING_EMOJI, FILLING_EMOJI},
+    output::{print_step, APPLYING_EMOJI, ASKING_EMOJI, CLEANING_EMOJI, FILLING_EMOJI},
 };
 use anyhow::Result;
 use clap::Clap;
@@ -33,7 +33,7 @@ fn a(args: Args, user_config_path: PathBuf) -> Result<()> {
     print_step(3, &format!("{} Filling out templates...", FILLING_EMOJI));
     crate::steps::populate::run(&args, &user_config, &repo_dir_path)?;
     // Fifth step: Cleaning up.
-    print_step(4, &format!("> Cleaning up..."));
+    print_step(4, &format!("{} Cleaning up...", CLEANING_EMOJI));
     crate::steps::cleanup::run(&repo_dir_path)?;
 
     Ok(())
