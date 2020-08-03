@@ -7,6 +7,7 @@ use crate::{
 };
 use anyhow::Result;
 use std::{env, path::PathBuf};
+use std::process::exit;
 
 pub fn run(args: &Args, user_config: &UserConfig) -> Result<PathBuf> {
     // `clap` does make it actually impossible (I think) to have an Option that is
@@ -22,6 +23,11 @@ pub fn run(args: &Args, user_config: &UserConfig) -> Result<PathBuf> {
     if let Some(repository_url) = repository_url {
         // Detect the current working directory and clone into a folder.
         let repository_dir_path = env::current_dir()?.join(&args.name);
+        // Check if the folder already exists.
+        if repository_dir_path.exists() {
+            eprintln!("A folder named {:?} already exists!", &args.name);
+            exit(1);
+        }
         clone_into_folder(&repository_url, &repository_dir_path)?;
 
         return Ok(repository_dir_path);
