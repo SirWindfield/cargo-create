@@ -12,11 +12,20 @@ use std::{
 };
 use tera::{Context, Tera};
 use walkdir::WalkDir;
+use std::collections::HashMap;
 
 pub fn run(args: &Args, _user_config: &UserConfig, repo_path: impl AsRef<Path>) -> Result<()> {
     // Create the template engine and context.
     let mut ctx = Context::new();
+    // Insert project and and enabled features.
     ctx.insert("project_name", &args.name);
+    if let Some(enabled_features) = &args.features {
+        let mut bool_map = HashMap::with_capacity(enabled_features.len());
+        for enabled_feature in enabled_features {
+            bool_map.insert(enabled_feature, true);
+        }
+        ctx.insert("features", &bool_map);
+    }
 
     let mut providers = Vec::new();
     for variable_provider in inventory::iter::<&dyn VariableProvider> {
