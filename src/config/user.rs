@@ -19,10 +19,10 @@ const DEBUG_USER_CONFIG_FILENAME: &str = "config.user.toml";
 pub struct UserConfig<'a> {
     /// A list of default values that will always be used to populate templates.
     #[serde(borrow)]
-    pub defaults: HashMap<&'a str, &'a str>,
+    pub defaults: Option<HashMap<&'a str, &'a str>>,
     /// Custom profiles that can be used as a shortcut.
     #[serde(borrow)]
-    pub profiles: HashMap<&'a str, &'a str>,
+    pub profiles: Option<HashMap<&'a str, &'a str>>,
 }
 
 pub fn user_config_file_path() -> Option<PathBuf> {
