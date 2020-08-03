@@ -1,8 +1,7 @@
-use crate::providers::{VariableProvider};
+use crate::providers::{author::email::EMAIL_KEY, VariableProvider};
+use git2::Config;
 use std::env;
 use tera::{Context, Value};
-use crate::providers::author::email::EMAIL_KEY;
-use git2::Config;
 
 const GIT_AUTHOR_EMAIL_ENV_NAME: &str = "GIT_AUTHOR_EMAIL";
 const GIT_COMMITTER_EMAIL_ENV_NAME: &str = "GIT_COMMITTER_EMAIL";
@@ -14,22 +13,23 @@ impl VariableProvider for GitEmailVariableProvider {
     fn populate(&self, ctx: &mut Context) -> bool {
         if !ctx.contains_key(EMAIL_KEY) {
             let author = env::var(GIT_AUTHOR_EMAIL_ENV_NAME)
-                .or_else(|_| env::var(GIT_COMMITTER_EMAIL_ENV_NAME)).or_else(|_| {
-                let git_config = Config::open_default();
-                match git_config {
-                    Ok(git_config) => {
-                        let username = git_config.get_string("user.email");
-                        return username;
-                    },
-                    Err(e) => Err(e)
-                }
-            });
+                .or_else(|_| env::var(GIT_COMMITTER_EMAIL_ENV_NAME))
+                .or_else(|_| {
+                    let git_config = Config::open_default();
+                    match git_config {
+                        Ok(git_config) => {
+                            let username = git_config.get_string("user.email");
+                            return username;
+                        }
+                        Err(e) => Err(e),
+                    }
+                });
             match author {
                 Ok(email) => {
                     ctx.insert(EMAIL_KEY, &email);
                     return true;
-                },
-                Err(e) => eprintln!("{}", e)
+                }
+                Err(e) => eprintln!("{}", e),
             }
         }
 
@@ -47,11 +47,17 @@ inventory::submit! {
 
 #[cfg(test)]
 mod tests {
+    use crate::providers::{
+        author::email::{
+            git::{
+                GitEmailVariableProvider, GIT_AUTHOR_EMAIL_ENV_NAME, GIT_COMMITTER_EMAIL_ENV_NAME,
+            },
+            EMAIL_KEY,
+        },
+        VariableProvider,
+    };
     use std::env;
     use tera::{to_value, Context};
-    use crate::providers::author::email::git::{GIT_AUTHOR_EMAIL_ENV_NAME, GitEmailVariableProvider, GIT_COMMITTER_EMAIL_ENV_NAME};
-    use crate::providers::author::email::EMAIL_KEY;
-    use crate::providers::VariableProvider;
 
     #[test]
     fn test_git_author_email() {

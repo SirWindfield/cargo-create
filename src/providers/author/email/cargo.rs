@@ -1,7 +1,6 @@
-use crate::providers::{VariableProvider};
+use crate::providers::{author::email::EMAIL_KEY, VariableProvider};
 use std::env;
 use tera::{Context, Value};
-use crate::providers::author::email::EMAIL_KEY;
 
 const CARGO_EMAIL_ENV_NAME: &str = "CARGO_EMAIL";
 
@@ -34,11 +33,12 @@ inventory::submit! {
 #[cfg(test)]
 mod tests {
     use super::CargoEmailVariableProvider;
+    use crate::providers::{
+        author::email::{cargo::CARGO_EMAIL_ENV_NAME, EMAIL_KEY},
+        VariableProvider,
+    };
     use std::env;
     use tera::{to_value, Context};
-    use crate::providers::author::email::cargo::CARGO_EMAIL_ENV_NAME;
-    use crate::providers::author::email::EMAIL_KEY;
-    use crate::providers::VariableProvider;
 
     #[test]
     fn test_cargo_email() {

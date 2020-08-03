@@ -1,7 +1,6 @@
-use crate::providers::VariableProvider;
+use crate::providers::{author::email::EMAIL_KEY, VariableProvider};
 use std::env;
 use tera::{Context, Value};
-use crate::providers::author::email::EMAIL_KEY;
 
 const EMAIL_ENV_NAME: &str = "EMAIL";
 
@@ -32,11 +31,15 @@ inventory::submit! {
 
 #[cfg(test)]
 mod tests {
+    use crate::providers::{
+        author::email::{
+            env::{EnvEmailVariableProvider, EMAIL_ENV_NAME},
+            EMAIL_KEY,
+        },
+        VariableProvider,
+    };
     use std::env;
     use tera::{to_value, Context};
-    use crate::providers::author::email::env::{EMAIL_ENV_NAME, EnvEmailVariableProvider};
-    use crate::providers::author::email::EMAIL_KEY;
-    use crate::providers::VariableProvider;
 
     #[test]
     fn test_git_committer_email() {

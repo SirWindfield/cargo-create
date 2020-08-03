@@ -14,7 +14,8 @@ pub trait Registry {
 pub trait VariableProvider {
     /// Populates the context with the variables.
     ///
-    /// Implementations should check if the value is already been inserted if they are part of set of variable providers (like `author_name`).
+    /// Implementations should check if the value is already been inserted if
+    /// they are part of set of variable providers (like `author_name`).
     fn populate(&self, ctx: &mut Context) -> bool;
     /// Returns the priority that the provider has.
     ///
