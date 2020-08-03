@@ -1,8 +1,19 @@
-# example
+# jen (cargo-create)
 
-[![docs_master_badge]][docs_master_url]
+[![Maintenance](https://img.shields.io/badge/maintenance-actively%20maintained-brightgreen.svg)](https://github.com/SirWindfield/carg-create)
+[![crates.io](https://img.shields.io/crates/v/cargo-create.svg)](https://crates.io/crates/cargo-create)
+[![crates.io](https://img.shields.io/crates/d/cargo-create)](https://crates.io/crates/cargo-create)
+[![Documentation](https://docs.rs/cargo-create/badge.svg)](https://docs.rs/cargo-create)
 
+> A CLI for fast project generation based on Tera templates. Also a cargo subcommand :)
 
+## Installation
+
+```text
+cargo install cargo-create --locked
+```
+
+The crate does install the CLI under two names: `jen` and `cargo-create`, allowing for a nicer Rust-related workflow.
 
 ## License
 
@@ -19,6 +30,3 @@ at your option.
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
 dual licensed as above, without any additional terms or conditions.
-
-[docs_master_badge]: https://img.shields.io/badge/docs.rs-master-green
-[docs_master_url]: https://<username>.github.io/<reponame>
