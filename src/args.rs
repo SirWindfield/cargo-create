@@ -36,8 +36,8 @@ pub struct Args {
     #[clap(long, short)]
     pub interactive: bool,
     /// The name of the project to generate.
-    #[clap(long, short)]
-    pub name: String,
+    #[clap(long, required_unless("config-path"), short)]
+    pub name: Option<String>,
     /// Catch-all for custom variables.
     #[clap(allow_hyphen_values(true), multiple(true), last(true))]
     pub parameters: Vec<String>,

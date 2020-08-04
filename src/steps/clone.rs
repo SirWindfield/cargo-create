@@ -30,10 +30,13 @@ pub fn run(args: &Args, user_config: &UserConfig) -> Result<PathBuf> {
     // Still, better safe than sorry...
     if let Some(repository_url) = repository_url {
         // Detect the current working directory and clone into a folder.
-        let repository_dir_path = env::current_dir()?.join(&args.name);
+        let repository_dir_path = env::current_dir()?.join(&args.name.as_ref().unwrap());
         // Check if the folder already exists.
         if repository_dir_path.exists() {
-            eprintln!("A folder named {:?} already exists!", &args.name);
+            eprintln!(
+                "A folder named {:?} already exists!",
+                &args.name.as_ref().unwrap()
+            );
             exit(1);
         }
         clone_into_folder(&repository_url, &repository_dir_path)?;
