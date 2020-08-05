@@ -79,35 +79,26 @@ impl<'a> Feature<'a> {
         if let Some(includes) = &self.include {
             // Collect all features that have been declared inside the `include` keyword if
             // this feature (`self`).
-            println!("{} includes: {:?}", self.name, self.include);
             let features_part_of_this_feature = all_features
                 .iter()
                 .filter(|feat| includes.contains(&feat.name))
                 .copied()
                 .collect::<Vec<_>>();
-            println!("first: {:?}", &features_part_of_this_feature);
 
             // TODO: add cyclic dependency check?
             // For each feature that is part of this one, recursively call this
             // function to collect all features.
             let mut features = Vec::new();
             for &feat in features_part_of_this_feature.iter() {
-                println!("recursive call for {}", feat.name);
                 let f = feat.get_features_for_feature(all_features);
-                println!("after recursive call: {:?}", f);
                 match f {
                     Cow::Owned(feature_vec) => {
-                        println!("owned");
                         features.extend(feature_vec.into_iter());
-                        println!("features: {:?}", &features);
                     }
                     Cow::Borrowed(feature_slice) => {
-                        println!("borrowed");
                         features.extend(feature_slice.iter().copied());
-                        println!("features: {:?}", &features);
                     }
                 }
-                println!("features after match: {:?}", &features);
             }
 
             features.push(self);
@@ -121,10 +112,7 @@ impl<'a> Feature<'a> {
             .iter()
             .position(|feat| feat.name == self.name)
             .unwrap();
-        println!("index: {}", self_index);
-        println!("Returning self index");
         let value = &all_features[self_index..=self_index];
-        println!("value: {:?}", &value);
         Cow::Borrowed(value)
     }
 }

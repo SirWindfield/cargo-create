@@ -26,10 +26,30 @@ pub fn run(
 
         // Only check if the user actually specified some features that he wants.
         let files_to_delete: Vec<&str> = if let Some(features) = &args.features {
+            let slice_of_features = &template_config
+                .features
+                .iter()
+                .map(|feat| feat)
+                .collect::<Vec<_>>();
+
+            let mut resolved_features = Vec::new();
+            features
+                .iter()
+                .map(|feature_name| template_config.feature(feature_name))
+                .flatten()
+                .map(|feat| feat.get_features_for_feature(slice_of_features.as_slice()))
+                .for_each(|feat| {
+                    resolved_features.extend_from_slice(&feat);
+                });
+
             template_config
                 .features
                 .iter()
-                .filter(|feat| !features.iter().any(|feat_name| feat.name == feat_name))
+                .filter(|feat| {
+                    !resolved_features
+                        .iter()
+                        .any(|feat_name| feat.name == feat_name.name)
+                })
                 .map(|feat| feat.files.as_ref())
                 .flatten()
                 .flatten()
