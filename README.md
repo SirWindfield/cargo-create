@@ -5,6 +5,8 @@
 [![crates.io](https://img.shields.io/crates/d/cargo-create)](https://crates.io/crates/cargo-create)
 [![Documentation](https://docs.rs/cargo-create/badge.svg)](https://docs.rs/cargo-create)
 
+![Continuous Integration](https://github.com/SirWindfield/cargo-create/workflows/Continuous%20Integration/badge.svg)
+
 > A CLI for fast project generation based on Tera templates. Also a cargo subcommand :)
 
 ## Installation
