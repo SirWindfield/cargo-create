@@ -6,7 +6,7 @@ use crate::{
     git::{clone_into_folder, parse_to_git_url},
 };
 use anyhow::Result;
-use std::{env, path::PathBuf, process::exit};
+use std::{env, fs, path::PathBuf, process::exit};
 
 // Changing to `or_else` does mean that the function owns the reference and thus
 // fails on compilation.
@@ -33,11 +33,16 @@ pub fn run(args: &Args, user_config: &UserConfig) -> Result<PathBuf> {
         let repository_dir_path = env::current_dir()?.join(&args.name.as_ref().unwrap());
         // Check if the folder already exists.
         if repository_dir_path.exists() {
-            eprintln!(
-                "A folder named {:?} already exists!",
-                &args.name.as_ref().unwrap()
-            );
-            exit(1);
+            // If forced, delete the old folder and continue.
+            if args.force {
+                fs::remove_dir_all(&repository_dir_path)?;
+            } else {
+                eprintln!(
+                    "A folder named {:?} already exists! Use `--force` or another project name.",
+                    &args.name.as_ref().unwrap()
+                );
+                exit(1);
+            }
         }
         clone_into_folder(&repository_url, &args.branch.as_ref(), &repository_dir_path)?;
 

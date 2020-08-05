@@ -14,6 +14,7 @@ pub struct Args {
     pub branch: Option<String>,
     /// Prints the path to the user configuration file.
     #[clap(
+        conflicts_with("force"),
         conflicts_with("git"),
         conflicts_with("interactive"),
         conflicts_with("parameters"),
@@ -27,6 +28,9 @@ pub struct Args {
     /// The items are space delimited.
     #[clap(long, short)]
     pub features: Option<Vec<String>>,
+    /// If true overwrites the target folder even if it is non-empty.
+    #[clap(conflicts_with("config-path"), long)]
+    pub force: bool,
     /// The git repository to use as a template.
     ///
     /// A branch can optionally be set by appending an `@<branch name>`.
