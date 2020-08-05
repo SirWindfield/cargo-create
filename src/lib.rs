@@ -1,11 +1,11 @@
 use crate::{
     args::Args,
-    config::user::{user_config_file_path, UserConfig},
+    config::user::{UserConfig},
     output::{print_step, APPLYING_EMOJI, CLEANING_EMOJI, FILLING_EMOJI},
 };
 use anyhow::Result;
-use clap::Clap;
-use std::{fs::OpenOptions, io::Read, path::PathBuf, process::exit};
+
+use std::{fs::OpenOptions, io::Read, path::PathBuf};
 
 pub mod args;
 pub mod config;

@@ -7,9 +7,9 @@ use cargo_create::{
 };
 use clap::{
     derive::{FromArgMatches, IntoApp},
-    AppSettings, Clap,
+    AppSettings,
 };
-use std::{fs::OpenOptions, io::Read, path::PathBuf, process::exit};
+use std::{process::exit};
 
 fn run() -> Result<()> {
     // `clap` programs used as cargo subcommands need the first two args removed
