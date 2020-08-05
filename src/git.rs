@@ -41,7 +41,11 @@ pub fn get_repo_name(url: &str) -> &str {
 // Done
 
 /// Clones a repository into the given folder.
-pub fn clone_into_folder(url: &str, folder_path: impl AsRef<Path>) -> Result<()> {
+pub fn clone_into_folder(
+    url: &str,
+    branch: &Option<impl AsRef<str>>,
+    folder_path: impl AsRef<Path>,
+) -> Result<()> {
     // let url = url::Url::parse(url).unwrap();
     // let ps = ProgressStyle::default_bar()
     //     .tick_chars("⠁⠂⠄⡀⢀⠠⠐⠈ ")
@@ -104,10 +108,12 @@ pub fn clone_into_folder(url: &str, folder_path: impl AsRef<Path>) -> Result<()>
             .expect("failed to join and wait on progressbars");
     });
 
-    RepoBuilder::new()
-        .fetch_options(fo)
-        .with_checkout(co)
-        .clone(url, folder_path.as_ref())?;
+    let mut builder = RepoBuilder::new();
+    builder.fetch_options(fo).with_checkout(co);
+    if let Some(branch_name) = branch {
+        builder.branch(branch_name.as_ref());
+    }
+    builder.clone(url, folder_path.as_ref())?;
 
     // Wait for the progress bar thread to actually finish. This prevents weird
     // clear and print fragments.

@@ -6,6 +6,11 @@ use log::LevelFilter;
 // INVESTIGATE: is their an easier way to declare the conflicts between the
 // arguments?
 pub struct Args {
+    /// The git branch to checkout.
+    ///
+    /// If not specified the default remote branch is used.
+    #[clap(conflicts_with("config-path"), conflicts_with("profile"), long, short)]
+    pub branch: Option<String>,
     /// Prints the path to the user configuration file.
     #[clap(
         conflicts_with("git"),

@@ -39,7 +39,7 @@ pub fn run(args: &Args, user_config: &UserConfig) -> Result<PathBuf> {
             );
             exit(1);
         }
-        clone_into_folder(&repository_url, &repository_dir_path)?;
+        clone_into_folder(&repository_url, &args.branch.as_ref(), &repository_dir_path)?;
 
         Ok(repository_dir_path)
     } else {

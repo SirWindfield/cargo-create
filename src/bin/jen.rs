@@ -1,9 +1,5 @@
 use anyhow::Result;
-use cargo_create::{
-    args::Args,
-    config::user::user_config_file_path,
-    start,
-};
+use cargo_create::{args::Args, config::user::user_config_file_path, start};
 use clap::Clap;
 use std::process::exit;
 
