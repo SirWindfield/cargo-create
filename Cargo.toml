@@ -26,7 +26,7 @@ git2 = "0.13.8"
 indicatif = "0.15.0"
 inventory = "0.1.7"
 log = "0.4.11"
-petgraph = "0.5.1"
+petgraph = { version = "0.5.1", default-features = false, features = ["graphmap"] }
 serde = { version = "1.0.114", features = ["derive"] }
 tera = "1.4.0"
 toml = "0.5.6"
