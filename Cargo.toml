@@ -5,7 +5,7 @@ description = "A CLI for fast project generation based on Tera templates."
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/SirWindfield/cargo-create"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2018"
 
 [[bin]]
