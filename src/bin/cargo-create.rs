@@ -1,8 +1,7 @@
 use anyhow::Result;
 use cargo_create::{
     args::Args,
-    config::user::{user_config_file_path, UserConfig},
-    output::{print_step, APPLYING_EMOJI, CLEANING_EMOJI, FILLING_EMOJI},
+    config::user::user_config_file_path,
     start,
 };
 use clap::{
