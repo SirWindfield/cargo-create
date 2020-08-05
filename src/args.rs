@@ -14,9 +14,11 @@ pub struct Args {
     pub branch: Option<String>,
     /// Prints the path to the user configuration file.
     #[clap(
+        conflicts_with("features"),
         conflicts_with("force"),
         conflicts_with("git"),
         conflicts_with("interactive"),
+        conflicts_with("name"),
         conflicts_with("parameters"),
         conflicts_with("profile"),
         long,
