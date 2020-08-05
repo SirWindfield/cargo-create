@@ -19,6 +19,14 @@ The crate does install the CLI under two names: `jen` and `cargo-create`, allowi
 
 An example template repository can be found over at https://github.com/SirWindfield/template-test.
 
+# Note
+
+The public API of the library crate is __NOT__ meant for consumption. It is not stable in any way, may change any time and is not
+related to the semantic versioning of this repository. The crate type is a library to allow for multiple binaries to exist in one
+single place.
+
+The semantic versioning does only apply to the overall CLI tool, aka the binaries itself and their public API.
+
 ## License
 
 Licensed under either of
