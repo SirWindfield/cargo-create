@@ -1,3 +1,4 @@
+use crate::config::user::UserConfig;
 use serde::Serialize;
 use tera::Context;
 
@@ -23,4 +24,13 @@ pub trait VariableProvider {
     fn priority(&self) -> u8;
 }
 
+pub trait ConfigurableVariableProvider {
+    /// Populates the context with the variables.
+    ///
+    /// Implementations should check if the value is already been inserted if
+    /// they are part of set of variable providers (like `author_name`).
+    fn populate(&self, ctx: &mut Context, user_config: &UserConfig) -> bool;
+}
+
+inventory::collect!(&'static dyn ConfigurableVariableProvider);
 inventory::collect!(&'static dyn VariableProvider);

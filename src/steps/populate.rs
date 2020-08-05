@@ -1,10 +1,14 @@
-use crate::{args::Args, config::user::UserConfig, providers::VariableProvider};
+use crate::{
+    args::Args,
+    config::user::UserConfig,
+    providers::{ConfigurableVariableProvider, VariableProvider},
+};
 use anyhow::Result;
 use std::{collections::HashMap, fs, path::Path};
 use tera::{Context, Tera};
 use walkdir::WalkDir;
 
-pub fn run(args: &Args, _user_config: &UserConfig, repo_path: impl AsRef<Path>) -> Result<()> {
+pub fn run(args: &Args, user_config: &UserConfig, repo_path: impl AsRef<Path>) -> Result<()> {
     // Create the template engine and context.
     let mut ctx = Context::new();
     // Insert project and and enabled features.
@@ -18,6 +22,9 @@ pub fn run(args: &Args, _user_config: &UserConfig, repo_path: impl AsRef<Path>) 
     }
 
     let mut providers = Vec::new();
+    for configurable_variable_provider in inventory::iter::<&dyn ConfigurableVariableProvider> {
+        configurable_variable_provider.populate(&mut ctx, user_config);
+    }
     for variable_provider in inventory::iter::<&dyn VariableProvider> {
         providers.push(variable_provider);
     }
