@@ -7,14 +7,14 @@ use anyhow::Result;
 use clap::Clap;
 use std::{fs::OpenOptions, io::Read, path::PathBuf, process::exit};
 
-mod args;
-mod config;
-mod git;
-mod output;
-mod providers;
-mod steps;
+pub mod args;
+pub mod config;
+pub mod git;
+pub mod output;
+pub mod providers;
+pub mod steps;
 
-fn a(args: Args, user_config_path: PathBuf) -> Result<()> {
+pub fn start(args: Args, user_config_path: PathBuf) -> Result<()> {
     // Read in user config file.
     let mut user_config_content = String::new();
     let mut file = OpenOptions::new()
@@ -40,24 +40,4 @@ fn a(args: Args, user_config_path: PathBuf) -> Result<()> {
     crate::steps::cleanup::run(&repo_dir_path)?;
 
     Ok(())
-}
-
-fn run() -> Result<()> {
-    let args: Args = Args::parse();
-    let user_config_path =
-        user_config_file_path().expect("failed to resolve user config file path");
-
-    if args.config_path {
-        println!("{}", user_config_path.display());
-        Ok(())
-    } else {
-        a(args, user_config_path)
-    }
-}
-
-fn main() {
-    if let Err(e) = run() {
-        eprintln!("An error occurred during execution: {:?}", e);
-        exit(1);
-    }
 }

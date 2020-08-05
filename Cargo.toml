@@ -10,11 +10,11 @@ edition = "2018"
 
 [[bin]]
 name = "cargo-create"
-path = "src/main.rs"
+path = "src/bin/cargo-create.rs"
 
 [[bin]]
 name = "jen"
-path = "src/main.rs"
+path = "src/bin/jen.rs"
 
 [dependencies]
 anyhow = "1.0.32"

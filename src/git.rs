@@ -2,7 +2,7 @@ use crate::output::{CHECKOUT_EMOJI, DOWNLOAD_EMOJI, INDEX_EMOJI};
 use anyhow::Result;
 use git2::{
     build::{CheckoutBuilder, RepoBuilder},
-    FetchOptions, RemoteCallbacks,
+    FetchOptions, RemoteCallbacks, Repository, RepositoryInitOptions,
 };
 use indicatif::{MultiProgress, ProgressBar, ProgressStyle};
 use std::path::Path;
