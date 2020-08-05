@@ -6,7 +6,7 @@ use cargo_create::{
     start,
 };
 use clap::Clap;
-use std::{process::exit};
+use std::process::exit;
 
 fn run() -> Result<()> {
     let args: Args = Args::parse();

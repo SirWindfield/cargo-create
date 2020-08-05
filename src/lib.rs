@@ -1,6 +1,6 @@
 use crate::{
     args::Args,
-    config::user::{UserConfig},
+    config::user::UserConfig,
     output::{print_step, APPLYING_EMOJI, CLEANING_EMOJI, FILLING_EMOJI},
 };
 use anyhow::Result;
