@@ -3,6 +3,7 @@ use log::LevelFilter;
 
 #[derive(Clap, Debug)]
 #[clap(about, author, version)]
+#[cfg_attr(feature = "colors", clap(setting(clap::AppSettings::ColoredHelp)))]
 // INVESTIGATE: is their an easier way to declare the conflicts between the
 // arguments?
 pub struct Args {
