@@ -10,7 +10,7 @@ pub struct Args {
     /// The git branch to checkout.
     ///
     /// If not specified the default remote branch is used.
-    #[clap(conflicts_with("config-path"), conflicts_with("profile"), long, short)]
+    #[clap(conflicts_with("config-path"), long, short)]
     pub branch: Option<String>,
     /// Prints the path to the user configuration file.
     #[clap(
