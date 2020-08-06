@@ -26,11 +26,7 @@ pub fn run(
 
         // Only check if the user actually specified some features that he wants.
         let files_to_delete: Vec<&str> = if let Some(features) = &args.features {
-            let slice_of_features = &template_config
-                .features
-                .iter()
-                .map(|feat| feat)
-                .collect::<Vec<_>>();
+            let slice_of_features = &template_config.features.iter().collect::<Vec<_>>();
 
             let mut resolved_features = Vec::new();
             features
