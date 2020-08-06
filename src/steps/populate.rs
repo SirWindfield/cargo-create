@@ -4,6 +4,7 @@ use crate::{
     providers::{ConfigurableVariableProvider, VariableProvider},
 };
 use anyhow::Result;
+use heck::SnakeCase;
 use std::{collections::HashMap, fs, path::Path};
 use tera::{Context, Tera};
 use walkdir::WalkDir;
@@ -16,7 +17,7 @@ pub fn run(args: &Args, user_config: &UserConfig, repo_path: impl AsRef<Path>) -
     if let Some(enabled_features) = &args.features {
         let mut bool_map = HashMap::with_capacity(enabled_features.len());
         for enabled_feature in enabled_features {
-            bool_map.insert(enabled_feature, true);
+            bool_map.insert(enabled_feature.to_snake_case(), true);
         }
         ctx.insert("features", &bool_map);
     }
