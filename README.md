@@ -19,7 +19,7 @@ The crate does install the CLI under two names: `jen` and `cargo-create`, allowi
 
 ## Examples
 
-An example template repository can be found over at https://github.com/SirWindfield/template-test.
+An example template repository can be found over at https://github.com/SirWindfield/template-test. For a more complex example take a look at the `template` branch of https://github.com/SirWindfield/zerotask-rust-bin-template/tree/template.
 
 ## Note
 
