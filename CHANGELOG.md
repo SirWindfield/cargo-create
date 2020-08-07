@@ -1,4 +1,6 @@
-# [](https://github.com/SirWindfield/cargo-create/compare/v0.2.2...v) (2020-08-07)
+# [](https://github.com/SirWindfield/cargo-create/compare/v0.3.0...v) (2020-08-07)
+
+# [0.3.0](https://github.com/SirWindfield/cargo-create/compare/v0.2.2...v0.3.0) (2020-08-07)
 
 ### Bug Fixes
 
