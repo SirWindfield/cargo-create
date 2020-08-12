@@ -25,7 +25,7 @@ directories-next = "1.0.1"
 git2 = "0.13.8"
 heck = "0.3.1"
 indicatif = "0.15.0"
-inventory = "0.1.7"
+inventory = "0.1.8"
 log = "0.4.11"
 petgraph = { version = "0.5.1", default-features = false, features = ["graphmap"] }
 serde = { version = "1.0.115", features = ["derive"] }
