@@ -1,5 +1,7 @@
-
-use cargo_create::{args::Args, cli::{Cli, CliRunner}};
+use cargo_create::{
+    args::Args,
+    cli::{Cli, CliRunner},
+};
 use clap::{
     derive::{FromArgMatches, IntoApp},
     AppSettings,

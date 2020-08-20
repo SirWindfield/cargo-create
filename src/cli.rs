@@ -1,6 +1,4 @@
-use crate::args::Args;
-use crate::config::user::user_config_file_path;
-use crate::start;
+use crate::{args::Args, config::user::user_config_file_path, start};
 
 use std::process::exit;
 
