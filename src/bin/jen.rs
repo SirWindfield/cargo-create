@@ -1,24 +1,15 @@
-use anyhow::Result;
-use cargo_create::{args::Args, config::user::user_config_file_path, start};
+
+use cargo_create::{args::Args, cli::{Cli, CliRunner}};
 use clap::Clap;
-use std::process::exit;
 
-fn run() -> Result<()> {
-    let args: Args = Args::parse();
-    let user_config_path =
-        user_config_file_path().expect("failed to resolve user config file path");
+struct JenCli;
 
-    if args.config_path {
-        println!("{}", user_config_path.display());
-        Ok(())
-    } else {
-        start(args, user_config_path)
+impl Cli for JenCli {
+    fn args(&self) -> Args {
+        Args::parse()
     }
 }
 
 fn main() {
-    if let Err(e) = run() {
-        eprintln!("An error occurred during execution: {:?}", e);
-        exit(1);
-    }
+    CliRunner::run(JenCli);
 }

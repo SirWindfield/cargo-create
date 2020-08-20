@@ -1,39 +1,30 @@
-use anyhow::Result;
-use cargo_create::{args::Args, config::user::user_config_file_path, start};
+
+use cargo_create::{args::Args, cli::{Cli, CliRunner}};
 use clap::{
     derive::{FromArgMatches, IntoApp},
     AppSettings,
 };
-use std::process::exit;
 
-fn run() -> Result<()> {
-    // `clap` programs used as cargo subcommands need the first two args removed
-    // before parsing.
-    let args = std::env::args_os().skip(2);
-    // The binary name has to be cargo here.
-    let app = Args::into_app();
-    // Since the binary name is stripped away earlier, we need to tell `clap` to not
-    // assume that the name exists.
-    let matches = app
-        .bin_name("cargo create")
-        .setting(AppSettings::NoBinaryName)
-        .get_matches_from(args);
-    let args: Args = Args::from_arg_matches(&matches);
+struct CargoCreateCli;
 
-    let user_config_path =
-        user_config_file_path().expect("failed to resolve user config file path");
+impl Cli for CargoCreateCli {
+    fn args(&self) -> Args {
+        // `clap` programs used as cargo subcommands need the first two args removed
+        // before parsing.
+        let args = std::env::args_os().skip(2);
+        // The binary name has to be cargo here.
+        let app = Args::into_app();
+        // Since the binary name is stripped away earlier, we need to tell `clap` to not
+        // assume that the name exists.
+        let matches = app
+            .bin_name("cargo create")
+            .setting(AppSettings::NoBinaryName)
+            .get_matches_from(args);
 
-    if args.config_path {
-        println!("{}", user_config_path.display());
-        Ok(())
-    } else {
-        start(args, user_config_path)
+        Args::from_arg_matches(&matches)
     }
 }
 
 fn main() {
-    if let Err(e) = run() {
-        eprintln!("An error occurred during execution: {:?}", e);
-        exit(1);
-    }
+    CliRunner::run(CargoCreateCli);
 }
