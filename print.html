@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>jen</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="template_repositories.html"><strong aria-hidden="true">3.</strong> Template Repositories</a></li><li class="chapter-item expanded "><a href="variables.html"><strong aria-hidden="true">4.</strong> Variables</a></li><li class="chapter-item expanded "><a href="resolvers.html"><strong aria-hidden="true">5.</strong> Resolvers</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">jen</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
+<p><code>jen</code> is a fast project generation tool based on Tera templates. Its power comes from two features:</p>
+<ol>
+<li>
+<p><strong>Template files:</strong> Projects can contain template files that get populated with variables during the creation process.</p>
+</li>
+<li>
+<p><strong>Features:</strong> Templates can declare a set of features that a user can opt-in to. Features are capable of conditionally including new files.</p>
+</li>
+</ol>
+<h1><a class="header" href="#getting-started" id="getting-started">Getting Started</a></h1>
+<h2><a class="header" href="#installation" id="installation">Installation</a></h2>
+<p>To install <code>jen</code>, please run the following command:</p>
+<pre><code class="language-text">cargo install cargo-create --locked
+</code></pre>
+<h2><a class="header" href="#usage" id="usage">Usage</a></h2>
+<p>After installation, the CLI is provided under two names: <code>jen</code> and as a <code>cargo</code> subcommand called <code>cargo-generate</code>.</p>
+<pre><code class="language-text">jen -h
+</code></pre>
+<p>The most common way to use <code>jen</code> is by simply cloning a template repository for a new project:</p>
+<pre><code class="language-text">jen -g SirWindfield/zerotask-rust-bin-template -b template -f workflows -n some_project
+</code></pre>
+<p>The above command will clone the repository, enable the <code>workflows</code> feature (which does add GitHub workflow files to the generated project) and populate all templates.</p>
+<h1><a class="header" href="#template-repositories" id="template-repositories">Template repositories</a></h1>
+<h2><a class="header" href="#configuration-file" id="configuration-file">Configuration file</a></h2>
+<p>Each template repository should contain a configuration file called <code>jen.toml</code> that is used to declare all features that the template repository does provide:</p>
+<pre><code class="language-toml">[[features]]
+name = &quot;ci-workflow&quot;
+files = [&quot;.github/workflows/ci.yml.tera&quot;]
+
+[[features]]
+name = &quot;docs-workflow&quot;
+files = [&quot;.github/workflows/docs.yml&quot;]
+
+[[features]]
+name = &quot;workflows&quot;
+include = [&quot;ci-workflow&quot;, &quot;docs-workflow&quot;]
+</code></pre>
+<p>Features can include files by adding the filename relative to the root of the repository to the array. Features can be composed together to create so-called <code>super-features</code>.</p>
+<h2><a class="header" href="#template-files" id="template-files">Template files</a></h2>
+<p>By default <code>jen</code> does simply copy every single file into the generated repository. If a file ends with <code>.tera</code>, <code>jen</code> will populate that file with all <a href="./variables.html">variables</a> it knows and remove the <code>.tera</code> extension after the population step was successful.</p>
+<blockquote>
+<p><strong>Note:</strong> If a template file does try to access a variable that <code>jen</code> does not know about, the CLI will exit with a panic message.</p>
+</blockquote>
+<h1><a class="header" href="#variables" id="variables">Variables</a></h1>
+<p><code>jen</code> provides a set of default variables that can be used inside of template files. The following table lists all available variables:</p>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
+<tr><td><strong>arch</strong></td><td>The system's architecture. For a list of possible values see <a href="https://doc.rust-lang.org/stable/std/env/consts/constant.ARCH.html">here</a>.</td></tr>
+<tr><td><strong>author_email</strong></td><td>The user's E-Mail. The value depends on the type of project. See <a href="./resolvers.html#author-resolver">here</a> for a detailed description of the discovery process.</td></tr>
+<tr><td><strong>author_name</strong></td><td>The user's name. The value depends on the type of project. See <a href="./resolvers.html#author-resolver">here</a> for a detailed description of the discovery process.</td></tr>
+<tr><td><strong>current_time</strong></td><td>The current date and time. The format is <code>2015-06-30 23:59:60.500 &lt;TZ&gt;</code> where <code>&lt;TZ&gt;</code> is the system's timezone.</td></tr>
+<tr><td><strong>os_family</strong></td><td>The system's OS family. For a list of possible values see <a href="https://doc.rust-lang.org/stable/std/env/consts/constant.FAMILY.html">here</a>.</td></tr>
+<tr><td><strong>os</strong></td><td>The system's OS. For a list of possible values see <a href="https://doc.rust-lang.org/stable/std/env/consts/constant.OS.html">here</a>.</td></tr>
+<tr><td>features.<code>name</code></td><td>A map that can be used to check if a given feature <code>name</code> has been enabled. Useful for conditional content that should be included inside a file</td></tr>
+</tbody></table>
+<h1><a class="header" href="#variable-resolver" id="variable-resolver">Variable Resolver</a></h1>
+<p>Resolvers are used to find the value of a given variable during runtime. <code>jen</code> does implement a set of default resolvers that populate templates containing variables listed at <a href="./variables.html">here</a>.</p>
+<h2><a class="header" href="#author-resolver" id="author-resolver">Author Resolver</a></h2>
+<p>The author resolver works by checking different environment variables to get the value for the user's name and E-Mail address. The following variables are resolved in the order they are listed inside the table:</p>
+<table><thead><tr><th>author_email</th><th>author_name</th></tr></thead><tbody>
+<tr><td>CARGO_EMAIL</td><td>CARGO_NAME</td></tr>
+<tr><td>GIT_AUTHOR_EMAIL</td><td>GIT_AUTHOR_NAME</td></tr>
+<tr><td>GIT_COMMITTER_EMAIL</td><td>GIT_COMMITTER_NAME</td></tr>
+<tr><td>EMAIL</td><td>USER</td></tr>
+</tbody></table>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
