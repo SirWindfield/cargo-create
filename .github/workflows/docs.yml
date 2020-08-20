@@ -18,7 +18,7 @@ jobs:
           mdbook-version: '0.4.2'
 
       - name: Build book
-        run: mdbook build
+        run: mdbook build ./docs
 
       - name: Deploy on gh-pages
         uses: peaceiris/actions-gh-pages@v3
