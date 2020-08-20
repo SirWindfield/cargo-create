@@ -22,11 +22,9 @@ impl CliRunner {
 
         if args.config_path {
             println!("{}", user_config_path.display());
-        } else {
-            if let Err(e) = start(args, user_config_path) {
-                eprintln!("An error occurred during execution: {:?}", e);
-                exit(1);
-            }
+        } else if let Err(e) = start(args, user_config_path) {
+            eprintln!("An error occurred during execution: {:?}", e);
+            exit(1);
         }
     }
 }
