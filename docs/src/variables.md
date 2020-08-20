@@ -10,7 +10,7 @@
 | **current_time** | The current date and time. The format is `2015-06-30 23:59:60.500 <TZ>` where `<TZ>` is the system's timezone.                                   |
 | **os_family**    | The system's OS family. For a list of possible values see [here][os_family].                                                                     |
 | **os**           | The system's OS. For a list of possible values see [here][os].                                                                                   |
-| features.`name`  | A map that can be used to check if a given feature <name> has been enabled. Useful for conditional content that should be included inside a file |
+| features.`name`  | A map that can be used to check if a given feature `name` has been enabled. Useful for conditional content that should be included inside a file |
 
 [arch]: https://doc.rust-lang.org/stable/std/env/consts/constant.ARCH.html
 [author_resolvers]: ./resolvers.md#author-resolver
