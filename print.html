@@ -185,6 +185,7 @@
 </code></pre>
 <p>The above command will clone the repository, enable the <code>workflows</code> feature (which does add GitHub workflow files to the generated project) and populate all templates.</p>
 <h1><a class="header" href="#template-repositories" id="template-repositories">Template repositories</a></h1>
+<p><code>jen</code> supports template files written for the <a href="https://github.com/Keats/tera">Tera</a> engine. For an overview about its features, syntax and some shorter examples, please take a look at the <a href="https://tera.netlify.app/docs">official documentation</a>.</p>
 <h2><a class="header" href="#configuration-file" id="configuration-file">Configuration file</a></h2>
 <p>Each template repository should contain a configuration file called <code>jen.toml</code> that is used to declare all features that the template repository does provide:</p>
 <pre><code class="language-toml">[[features]]
@@ -201,7 +202,7 @@ include = [&quot;ci-workflow&quot;, &quot;docs-workflow&quot;]
 </code></pre>
 <p>Features can include files by adding the filename relative to the root of the repository to the array. Features can be composed together to create so-called <code>super-features</code>.</p>
 <h2><a class="header" href="#template-files" id="template-files">Template files</a></h2>
-<p>By default <code>jen</code> does simply copy every single file into the generated repository. If a file ends with <code>.tera</code>, <code>jen</code> will populate that file with all <a href="./variables.html">variables</a> it knows and remove the <code>.tera</code> extension after the population step was successful.</p>
+<p>By default <code>jen</code> does simply copy every single file into the generated repository. If a file ends with <code>.tera</code>, <code>jen</code> will run the tempolate engine on it, populating that file with all <a href="./variables.html">variables</a> it knows and remove the <code>.tera</code> extension after the population step was successful.</p>
 <blockquote>
 <p><strong>Note:</strong> If a template file does try to access a variable that <code>jen</code> does not know about, the CLI will exit with a panic message.</p>
 </blockquote>
