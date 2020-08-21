@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+    paths:
+      - .github/workflows/docs.yml
+      - docs
 
 jobs:
   deploy:
