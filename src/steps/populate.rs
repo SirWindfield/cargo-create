@@ -35,6 +35,15 @@ pub fn run(args: &Args, user_config: &UserConfig, repo_path: impl AsRef<Path>) -
         provider.populate(&mut ctx);
     }
 
+    let mut tera = Tera::default();
+    tera.register_filter("camel_case", crate::filters::text::camel_case);
+    tera.register_filter("kebab_case", crate::filters::text::kebab_case);
+    tera.register_filter("lower_case", crate::filters::text::lower_case);
+    tera.register_filter("mixed_case", crate::filters::text::mixed_case);
+    tera.register_filter("snake_case", crate::filters::text::snake_case);
+    tera.register_filter("title_case", crate::filters::text::title_case);
+    tera.register_filter("upper_case", crate::filters::text::upper_case);
+
     for entry in WalkDir::new(repo_path.as_ref())
         .into_iter()
         .filter_map(|e| e.ok())
@@ -42,7 +51,7 @@ pub fn run(args: &Args, user_config: &UserConfig, repo_path: impl AsRef<Path>) -
         let filename = entry.file_name().to_string_lossy();
         if filename.ends_with(".tera") {
             let raw_template = fs::read_to_string(entry.path())?;
-            let rendered = Tera::one_off(&raw_template, &ctx, false)?;
+            let rendered = tera.render_str(&raw_template, &ctx)?;
             fs::write(entry.path(), rendered)?;
 
             let relative_to_repo_path = entry.path().strip_prefix(repo_path.as_ref())?;

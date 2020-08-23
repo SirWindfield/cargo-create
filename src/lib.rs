@@ -10,6 +10,7 @@ use std::{fs::OpenOptions, io::Read, path::PathBuf};
 pub mod args;
 pub mod cli;
 pub mod config;
+pub mod filters;
 pub mod git;
 pub mod output;
 pub mod providers;
