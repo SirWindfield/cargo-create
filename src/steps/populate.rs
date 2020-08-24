@@ -7,6 +7,7 @@ use anyhow::Result;
 use heck::SnakeCase;
 use std::{collections::HashMap, fs, path::Path};
 use tera::{Context, Tera};
+use tera_text_filters::register_all;
 use walkdir::WalkDir;
 
 pub fn run(args: &Args, user_config: &UserConfig, repo_path: impl AsRef<Path>) -> Result<()> {
@@ -36,13 +37,7 @@ pub fn run(args: &Args, user_config: &UserConfig, repo_path: impl AsRef<Path>) -
     }
 
     let mut tera = Tera::default();
-    tera.register_filter("camel_case", crate::filters::text::camel_case);
-    tera.register_filter("kebab_case", crate::filters::text::kebab_case);
-    tera.register_filter("lower_case", crate::filters::text::lower_case);
-    tera.register_filter("mixed_case", crate::filters::text::mixed_case);
-    tera.register_filter("snake_case", crate::filters::text::snake_case);
-    tera.register_filter("title_case", crate::filters::text::title_case);
-    tera.register_filter("upper_case", crate::filters::text::upper_case);
+    register_all(&mut tera);
 
     for entry in WalkDir::new(repo_path.as_ref())
         .into_iter()
