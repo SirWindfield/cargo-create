@@ -82,7 +82,7 @@ pub fn run(
                 .copied()
                 .map(|entry| match entry {
                     FileEntry::Simple(filename) => filename,
-                    FileEntry::Complex(MoveFileEntry {from, ..}) => from,
+                    FileEntry::Complex(MoveFileEntry { from, .. }) => from,
                 })
                 .collect::<Vec<_>>();
 
