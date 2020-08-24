@@ -12,15 +12,25 @@ name = "ci-workflow"
 files = [".github/workflows/ci.yml.tera"]
 
 [[features]]
-name = "docs-workflow"
-files = [".github/workflows/docs.yml"]
+name = "docs-mdbook-workflow"
+files = [
+    { from = ".github/workflows/docs_mdbook.yml", to = ".github/workflows/docs.yml" }
+]
+
+[[features]]
+name = "docs-crates-workflow"
+files = [
+    { from = ".github/workflows/docs_crates.yml", to = ".github/workflows/docs.yml" }
+]
 
 [[features]]
 name = "workflows"
-include = ["ci-workflow", "docs-workflow"]
+include = ["ci-workflow", "docs-mdbook-workflow"]
 ```
 
 Features can include files by adding the filename relative to the root of the repository to the array. Features can be composed together to create so-called `super-features`.
+
+Renaming files is supported to allow multiple features to include the same filename. Renaming is done by using an `inline table` instead of a simple string. See the example above for a simple use-case.
 
 ## Template files
 
