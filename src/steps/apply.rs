@@ -57,7 +57,6 @@ pub fn run(
                         .iter()
                         .any(|feat_name| feat.name == feat_name.name)
                 });
-            println!("partitioned: {:#?}", files_to_operate_on);
 
             // Collect all files to rename.
             let files_to_rename = files_to_operate_on
@@ -105,8 +104,6 @@ pub fn run(
                 Vec::new(),
             )
         };
-
-        println!("{:#?}", &files_to_operate_on);
 
         // Delete all files that are not needed.
         for file in &files_to_operate_on.0 {
