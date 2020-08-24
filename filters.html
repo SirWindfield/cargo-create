@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Getting Started - jen</title>
+        <title>Filters - jen</title>
         
         
 
@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="getting_started.html" class="active"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="template_repositories.html"><strong aria-hidden="true">3.</strong> Template Repositories</a></li><li class="chapter-item expanded "><a href="variables.html"><strong aria-hidden="true">4.</strong> Variables</a></li><li class="chapter-item expanded "><a href="filters.html"><strong aria-hidden="true">5.</strong> Filters</a></li><li class="chapter-item expanded "><a href="resolvers.html"><strong aria-hidden="true">6.</strong> Resolvers</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="template_repositories.html"><strong aria-hidden="true">3.</strong> Template Repositories</a></li><li class="chapter-item expanded "><a href="variables.html"><strong aria-hidden="true">4.</strong> Variables</a></li><li class="chapter-item expanded "><a href="filters.html" class="active"><strong aria-hidden="true">5.</strong> Filters</a></li><li class="chapter-item expanded "><a href="resolvers.html"><strong aria-hidden="true">6.</strong> Resolvers</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -159,32 +159,30 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#getting-started" id="getting-started">Getting Started</a></h1>
-<h2><a class="header" href="#installation" id="installation">Installation</a></h2>
-<p>To install <code>jen</code>, please run the following command:</p>
-<pre><code class="language-text">cargo install cargo-create --locked
-</code></pre>
-<h2><a class="header" href="#usage" id="usage">Usage</a></h2>
-<p>After installation, the CLI is provided under two names: <code>jen</code> and as a <code>cargo</code> subcommand called <code>cargo-generate</code>.</p>
-<pre><code class="language-text">jen -h
-</code></pre>
-<p>The most common way to use <code>jen</code> is by simply cloning a template repository for a new project:</p>
-<pre><code class="language-text">jen -g SirWindfield/zerotask-rust-bin-template -b template -f workflows -n some_project
-</code></pre>
-<p>The above command will clone the repository, enable the <code>workflows</code> feature (which does add GitHub workflow files to the generated project) and populate all templates.</p>
+                        <h1><a class="header" href="#filters" id="filters">Filters</a></h1>
+<p><code>jen</code> comes with a set of buildin filters alongside those that <a href="https://github.com/Keats/tera">Tera</a> <a href="https://tera.netlify.app/docs/#built-in-filters">already provides</a>.</p>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
+<tr><td>camel_case</td><td>Converts text to camel case: <code>some text</code> -&gt; <code>SomeText</code>.</td></tr>
+<tr><td>kebab_case</td><td>Alias for <a href="https://tera.netlify.app/docs/#slugify">slugify</a>.</td></tr>
+<tr><td>lower_case</td><td>Alias for <a href="https://tera.netlify.app/docs/#lower">lower</a>.</td></tr>
+<tr><td>mixed_case</td><td>Converts text to mixed case: <code>Some Text</code> -&gt; <code>someText</code>.</td></tr>
+<tr><td>snake_case</td><td>Converts text to snake case: <code>Some text</code> -&gt; <code>some_text</code>.</td></tr>
+<tr><td>title_case</td><td>Alias for <a href="https://tera.netlify.app/docs/#title">title</a>.</td></tr>
+<tr><td>upper_case</td><td>Alias for <a href="https://tera.netlify.app/docs/#built-in-filters">upper</a>.</td></tr>
+</tbody></table>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="variables.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="template_repositories.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="resolvers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -196,13 +194,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="variables.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="template_repositories.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="resolvers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

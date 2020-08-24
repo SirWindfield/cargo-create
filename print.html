@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="template_repositories.html"><strong aria-hidden="true">3.</strong> Template Repositories</a></li><li class="chapter-item expanded "><a href="variables.html"><strong aria-hidden="true">4.</strong> Variables</a></li><li class="chapter-item expanded "><a href="resolvers.html"><strong aria-hidden="true">5.</strong> Resolvers</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="template_repositories.html"><strong aria-hidden="true">3.</strong> Template Repositories</a></li><li class="chapter-item expanded "><a href="variables.html"><strong aria-hidden="true">4.</strong> Variables</a></li><li class="chapter-item expanded "><a href="filters.html"><strong aria-hidden="true">5.</strong> Filters</a></li><li class="chapter-item expanded "><a href="resolvers.html"><strong aria-hidden="true">6.</strong> Resolvers</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -193,14 +193,23 @@ name = &quot;ci-workflow&quot;
 files = [&quot;.github/workflows/ci.yml.tera&quot;]
 
 [[features]]
-name = &quot;docs-workflow&quot;
-files = [&quot;.github/workflows/docs.yml&quot;]
+name = &quot;docs-mdbook-workflow&quot;
+files = [
+    { from = &quot;.github/workflows/docs_mdbook.yml&quot;, to = &quot;.github/workflows/docs.yml&quot; }
+]
+
+[[features]]
+name = &quot;docs-crates-workflow&quot;
+files = [
+    { from = &quot;.github/workflows/docs_crates.yml&quot;, to = &quot;.github/workflows/docs.yml&quot; }
+]
 
 [[features]]
 name = &quot;workflows&quot;
-include = [&quot;ci-workflow&quot;, &quot;docs-workflow&quot;]
+include = [&quot;ci-workflow&quot;, &quot;docs-mdbook-workflow&quot;]
 </code></pre>
 <p>Features can include files by adding the filename relative to the root of the repository to the array. Features can be composed together to create so-called <code>super-features</code>.</p>
+<p>Renaming files is supported to allow multiple features to include the same filename. Renaming is done by using an <code>inline table</code> instead of a simple string. See the example above for a simple use-case.</p>
 <h2><a class="header" href="#template-files" id="template-files">Template files</a></h2>
 <p>By default <code>jen</code> does simply copy every single file into the generated repository. If a file ends with <code>.tera</code>, <code>jen</code> will run the tempolate engine on it, populating that file with all <a href="./variables.html">variables</a> it knows and remove the <code>.tera</code> extension after the population step was successful.</p>
 <blockquote>
@@ -216,6 +225,17 @@ include = [&quot;ci-workflow&quot;, &quot;docs-workflow&quot;]
 <tr><td><strong>os_family</strong></td><td>The system's OS family. For a list of possible values see <a href="https://doc.rust-lang.org/stable/std/env/consts/constant.FAMILY.html">here</a>.</td></tr>
 <tr><td><strong>os</strong></td><td>The system's OS. For a list of possible values see <a href="https://doc.rust-lang.org/stable/std/env/consts/constant.OS.html">here</a>.</td></tr>
 <tr><td>features.<code>name</code></td><td>A map that can be used to check if a given feature <code>name</code> has been enabled. Useful for conditional content that should be included inside a file</td></tr>
+</tbody></table>
+<h1><a class="header" href="#filters" id="filters">Filters</a></h1>
+<p><code>jen</code> comes with a set of buildin filters alongside those that <a href="https://github.com/Keats/tera">Tera</a> <a href="https://tera.netlify.app/docs/#built-in-filters">already provides</a>.</p>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
+<tr><td>camel_case</td><td>Converts text to camel case: <code>some text</code> -&gt; <code>SomeText</code>.</td></tr>
+<tr><td>kebab_case</td><td>Alias for <a href="https://tera.netlify.app/docs/#slugify">slugify</a>.</td></tr>
+<tr><td>lower_case</td><td>Alias for <a href="https://tera.netlify.app/docs/#lower">lower</a>.</td></tr>
+<tr><td>mixed_case</td><td>Converts text to mixed case: <code>Some Text</code> -&gt; <code>someText</code>.</td></tr>
+<tr><td>snake_case</td><td>Converts text to snake case: <code>Some text</code> -&gt; <code>some_text</code>.</td></tr>
+<tr><td>title_case</td><td>Alias for <a href="https://tera.netlify.app/docs/#title">title</a>.</td></tr>
+<tr><td>upper_case</td><td>Alias for <a href="https://tera.netlify.app/docs/#built-in-filters">upper</a>.</td></tr>
 </tbody></table>
 <h1><a class="header" href="#variable-resolver" id="variable-resolver">Variable Resolver</a></h1>
 <p>Resolvers are used to find the value of a given variable during runtime. <code>jen</code> does implement a set of default resolvers that populate templates containing variables listed at <a href="./variables.html">here</a>.</p>
