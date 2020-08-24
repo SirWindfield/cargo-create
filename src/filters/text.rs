@@ -1,6 +1,6 @@
 use heck::{CamelCase, KebabCase, MixedCase, SnakeCase, TitleCase};
 use std::collections::HashMap;
-use tera::{Result, Value, to_value, try_get_value};
+use tera::{to_value, try_get_value, Result, Value};
 
 pub fn camel_case(value: &Value, _: &HashMap<String, Value>) -> Result<Value> {
     let s = try_get_value!("camel_case", "value", String, value);
