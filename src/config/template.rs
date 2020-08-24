@@ -44,7 +44,7 @@ pub struct Feature<'a> {
     pub name: &'a str,
     /// The files that get included and processed if the feature is being used.
     #[serde(borrow)]
-    pub files: Option<Vec<&'a str>>,
+    pub files: Option<Vec<FileEntry<'a>>>,
     /// Features that should get included if this one is being used.
     pub include: Option<Vec<&'a str>>,
 }
@@ -54,7 +54,7 @@ impl<'a> Feature<'a> {
     ///
     /// This does merge all files plus the files that get included from all
     /// other workflows.
-    pub fn files_to_include(&self) -> Vec<&'a str> {
+    pub fn files_to_include(&self) -> Vec<FileEntry<'a>> {
         let mut vec = Vec::new();
 
         if let Some(files) = &self.files {
@@ -114,5 +114,45 @@ impl<'a> Feature<'a> {
             .unwrap();
         let value = &all_features[self_index..=self_index];
         Cow::Borrowed(value)
+    }
+}
+
+#[derive(Copy, Clone, Debug, Deserialize, Eq, PartialEq)]
+#[serde(untagged)]
+pub enum FileEntry<'a> {
+    Complex(MoveFileEntry<'a>),
+    Simple(&'a str),
+}
+
+impl Default for FileEntry<'_> {
+    fn default() -> Self {
+        Self::Simple(Default::default())
+    }
+}
+
+#[derive(Copy, Clone, Debug, Default, Deserialize, Eq, PartialEq)]
+pub struct MoveFileEntry<'a> {
+    pub from: &'a str,
+    pub to: &'a str,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::TemplateConfig;
+
+    #[test]
+    fn test_de_rename_files() {
+        let config = r#"
+        [[features]]
+        name = "one"
+        files = [
+            "simple.txt",
+            { from = "complex.txt", to = "moved.txt" }
+        ]
+        "#;
+
+        let config: TemplateConfig = toml::from_str(&config).unwrap();
+        println!("{:#?}", config);
+        assert!(true);
     }
 }
