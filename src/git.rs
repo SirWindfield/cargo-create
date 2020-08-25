@@ -2,8 +2,9 @@ use crate::output::{CHECKOUT_EMOJI, DOWNLOAD_EMOJI, INDEX_EMOJI};
 use anyhow::Result;
 use git2::{
     build::{CheckoutBuilder, RepoBuilder},
-    FetchOptions, RemoteCallbacks,
+    Config, FetchOptions, RemoteCallbacks,
 };
+use git2_credentials::CredentialHandler;
 use indicatif::{MultiProgress, ProgressBar, ProgressStyle};
 use std::path::Path;
 
@@ -71,6 +72,12 @@ pub fn clone_into_folder(
     checkout_pb.set_message(&format!("{} {:<15}", CHECKOUT_EMOJI, "Checking out..."));
 
     let mut cb = RemoteCallbacks::new();
+
+    // Enable credentials login.
+    let git_config = Config::open_default()?;
+    let mut ch = CredentialHandler::new(git_config);
+    cb.credentials(move |url, username, allowed| ch.try_next_credential(url, username, allowed));
+
     cb.transfer_progress(move |stats| {
         network_pb.set_length(stats.total_objects() as u64);
         network_pb.set_position(stats.received_objects() as u64);
