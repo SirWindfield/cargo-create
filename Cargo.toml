@@ -19,7 +19,7 @@ path = "src/bin/jen.rs"
 
 [dependencies]
 anyhow = "1.0.39"
-clap = "3.0.0-beta.1"
+clap = "3.0.0-beta.2"
 chrono = { version = "0.4.19", features = ["serde"] }
 console = "0.14.1"
 directories-next = "2.0.0"
