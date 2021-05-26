@@ -25,7 +25,7 @@ console = "0.14.1"
 directories-next = "2.0.0"
 git2 = "0.13.12"
 heck = "0.3.1"
-indicatif = "0.15.0"
+indicatif = "0.16.2"
 inventory = "0.1.10"
 log = "0.4.14"
 petgraph = { version = "0.5.1", default-features = false, features = ["graphmap"] }
