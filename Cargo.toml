@@ -34,7 +34,7 @@ tera = "1.5.0"
 tera-text-filters = "1.0.0"
 toml = "0.5.8"
 walkdir = "2.3.1"
-git2_credentials = "0.6.1"
+git2_credentials = "0.7.3"
 
 [features]
 default = ["colors"]
