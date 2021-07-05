@@ -110,7 +110,7 @@ dependencies = [
  "indicatif 0.15.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "inventory 0.1.10 (registry+https://github.com/rust-lang/crates.io-index)",
  "log 0.4.14 (registry+https://github.com/rust-lang/crates.io-index)",
- "petgraph 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "petgraph 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.124 (registry+https://github.com/rust-lang/crates.io-index)",
  "tera 1.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "tera-text-filters 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -166,7 +166,7 @@ dependencies = [
  "atty 0.2.14 (registry+https://github.com/rust-lang/crates.io-index)",
  "bitflags 1.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "clap_derive 3.0.0-beta.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "indexmap 1.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "indexmap 1.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "lazy_static 1.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "os_str_bytes 2.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "strsim 0.10.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -315,7 +315,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "fixedbitset"
-version = "0.2.0"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
@@ -399,11 +399,8 @@ dependencies = [
 
 [[package]]
 name = "hashbrown"
-version = "0.8.1"
+version = "0.11.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-dependencies = [
- "autocfg 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
-]
 
 [[package]]
 name = "heck"
@@ -455,11 +452,11 @@ dependencies = [
 
 [[package]]
 name = "indexmap"
-version = "1.5.0"
+version = "1.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "autocfg 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "hashbrown 0.8.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "hashbrown 0.11.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -679,11 +676,11 @@ dependencies = [
 
 [[package]]
 name = "petgraph"
-version = "0.5.1"
+version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
- "fixedbitset 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "indexmap 1.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "fixedbitset 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "indexmap 1.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -1201,7 +1198,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum dirs-sys-next 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "9c60f7b8a8953926148223260454befb50c751d3c50e1c178c4fd1ace4083c9a"
 "checksum encode_unicode 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)" = "a357d28ed41a50f9c765dbfe56cbc04a64e53e5fc58ba79fbc34c10ef3df831f"
 "checksum fake-simd 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "e88a8acf291dafb59c2d96e8f59828f3838bb1a70398823ade51a84de6a6deed"
-"checksum fixedbitset 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "37ab347416e802de484e4d03c7316c48f1ecb56574dfd4a46a80f173ce1de04d"
+"checksum fixedbitset 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "398ea4fabe40b9b0d885340a2a991a44c8a645624075ad966d21f88688e2b69e"
 "checksum fnv 1.0.7 (registry+https://github.com/rust-lang/crates.io-index)" = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 "checksum generic-array 0.12.3 (registry+https://github.com/rust-lang/crates.io-index)" = "c68f0274ae0e023facc3c97b2e00f076be70e254bc851d972503b328db79b2ec"
 "checksum getrandom 0.1.14 (registry+https://github.com/rust-lang/crates.io-index)" = "7abc8dd8451921606d809ba32e95b6111925cd2906060d2dcc29c070220503eb"
@@ -1210,13 +1207,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum git2_credentials 0.6.1 (registry+https://github.com/rust-lang/crates.io-index)" = "17f3f10b0ddf91b9ee499346534a1a2a8f01b4b5ac9f0e40a1d5075b7f317c21"
 "checksum globset 0.4.5 (registry+https://github.com/rust-lang/crates.io-index)" = "7ad1da430bd7281dde2576f44c84cc3f0f7b475e7202cd503042dff01a8c8120"
 "checksum globwalk 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "178270263374052c40502e9f607134947de75302c1348d1a0e31db67c1691446"
-"checksum hashbrown 0.8.1 (registry+https://github.com/rust-lang/crates.io-index)" = "34f595585f103464d8d2f6e9864682d74c1601fed5e07d62b1c9058dba8246fb"
+"checksum hashbrown 0.11.2 (registry+https://github.com/rust-lang/crates.io-index)" = "ab5ef0d4909ef3724cc8cce6ccc8572c5c817592e9285f5464f8e86f8bd3726e"
 "checksum heck 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)" = "20564e78d53d2bb135c343b3f47714a56af2061f1c928fdb541dc7b9fdd94205"
 "checksum hermit-abi 0.1.15 (registry+https://github.com/rust-lang/crates.io-index)" = "3deed196b6e7f9e44a2ae8d94225d80302d81208b1bb673fd21fe634645c85a9"
 "checksum humansize 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "b6cab2627acfc432780848602f3f558f7e9dd427352224b0d9324025796d2a5e"
 "checksum idna 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "02e2673c30ee86b5b96a9cb52ad15718aa1f966f5ab9ad54a8b95d5ca33120a9"
 "checksum ignore 0.4.16 (registry+https://github.com/rust-lang/crates.io-index)" = "22dcbf2a4a289528dbef21686354904e1c694ac642610a9bff9e7df730d9ec72"
-"checksum indexmap 1.5.0 (registry+https://github.com/rust-lang/crates.io-index)" = "5b88cd59ee5f71fea89a62248fc8f387d44400cefe05ef548466d61ced9029a7"
+"checksum indexmap 1.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = "bc633605454125dec4b66843673f01c7df2b89479b32e0ed634e43a91cff62a5"
 "checksum indicatif 0.15.0 (registry+https://github.com/rust-lang/crates.io-index)" = "7baab56125e25686df467fe470785512329883aab42696d661247aca2a2896e4"
 "checksum inventory 0.1.10 (registry+https://github.com/rust-lang/crates.io-index)" = "0f0f7efb804ec95e33db9ad49e4252f049e37e8b0a4652e3cd61f7999f2eff7f"
 "checksum inventory-impl 0.1.10 (registry+https://github.com/rust-lang/crates.io-index)" = "75c094e94816723ab936484666968f5b58060492e880f3c8d00489a1e244fa51"
@@ -1244,7 +1241,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum pest_derive 2.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "833d1ae558dc601e9a60366421196a8d94bc0ac980476d0b67e1d0988d72b2d0"
 "checksum pest_generator 2.1.3 (registry+https://github.com/rust-lang/crates.io-index)" = "99b8db626e31e5b81787b9783425769681b347011cc59471e33ea46d2ea0cf55"
 "checksum pest_meta 2.1.3 (registry+https://github.com/rust-lang/crates.io-index)" = "54be6e404f5317079812fc8f9f5279de376d8856929e21c184ecf6bbd692a11d"
-"checksum petgraph 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "467d164a6de56270bd7c4d070df81d07beace25012d5103ced4e9ff08d6afdb7"
+"checksum petgraph 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)" = "4a13a2fa9d0b63e5f22328828741e523766fff0ee9e779316902290dff3f824f"
 "checksum pkg-config 0.3.18 (registry+https://github.com/rust-lang/crates.io-index)" = "d36492546b6af1463394d46f0c834346f31548646f6ba10849802c9c9a27ac33"
 "checksum ppv-lite86 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)" = "237a5ed80e274dbc66f86bd59c1e25edc039660be53194b5fe0a482e0f2612ea"
 "checksum proc-macro-error 0.4.12 (registry+https://github.com/rust-lang/crates.io-index)" = "18f33027081eba0a6d8aba6d1b1c3a3be58cbb12106341c2d5759fcd9b5277e7"
